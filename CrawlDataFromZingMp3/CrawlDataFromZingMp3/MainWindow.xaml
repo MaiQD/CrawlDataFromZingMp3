@@ -5,8 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrawlDataFromZingMp3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+		xmlns:uc="clr-namespace:CrawlDataFromZingMp3"
+        Title="MainWindow" Height="630" Width="500"  WindowStartupLocation="CenterScreen">
+
+	<Window.Resources>
+		<ResourceDictionary Source="mainStyle.xaml"></ResourceDictionary>
+	</Window.Resources>
+	<Grid>
+		<Grid x:Name="topSong">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"></RowDefinition>
+				<RowDefinition></RowDefinition>
+			</Grid.RowDefinitions>
+			<!--Main Control-->
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid Grid.Column="0">
+					<ToggleButton IsChecked="{Binding IsCheckVN}">BXH Việt Nam</ToggleButton>
+				</Grid>
+				<Grid Grid.Column="1">
+					<ToggleButton IsChecked="{Binding IsCheckEU}">BXH Âu Mỹ</ToggleButton>
+				</Grid>
+				<Grid Grid.Column="2">
+					<ToggleButton IsChecked="{Binding IsCheckKO}">BXH Hàn Quốc</ToggleButton>
+				</Grid>
+			</Grid>
+			<!--List top 10 songs-->
+			<Grid Grid.Row="1">
+
+				<ListBox x:Name="listBoxTopSong" HorizontalContentAlignment="Stretch">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<Border Height="50" BorderThickness="1" BorderBrush="Gray">
+								<Grid >
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="50"></ColumnDefinition>
+										<ColumnDefinition></ColumnDefinition>
+										<ColumnDefinition Width="50"></ColumnDefinition>
+									</Grid.ColumnDefinitions>
+									<Grid Grid.Row="0" Grid.Column="0">
+										<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">1</TextBlock>
+									</Grid>
+									<Grid Grid.Column="1">
+										<Grid.RowDefinitions>
+											<RowDefinition></RowDefinition>
+											<RowDefinition></RowDefinition>
+										</Grid.RowDefinitions>
+										<Grid Grid.Row="0" HorizontalAlignment="Left">
+											<TextBlock >Name of the song</TextBlock>
+										</Grid>
+										<Grid Grid.Row="1" HorizontalAlignment="Left">
+											<TextBlock >Singer</TextBlock>
+										</Grid>
+
+
+									</Grid>
+									<Grid Grid.Column="2">
+										<Button x:Name="btnPlay" Click="btnPlay_Click">Play</Button></Grid>
+								</Grid>
+							</Border>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</Grid>
+
+
+		</Grid>
+		<Grid Visibility="Hidden" x:Name="songDetail">
+			<uc:UCSong x:Name="ucSong"></uc:UCSong>
+		</Grid>
+	</Grid>
 </Window>
