@@ -28,6 +28,8 @@ namespace CrawlDataFromZingMp3
 			listBoxTopSong.ItemsSource = new List<string> { "", "", "", "", "", "", "", "", "", "" };
 			ucSong.BackToList += UcSong_BackToList;
 			IsCheckVN = true;
+			//để binding
+			this.DataContext = this;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
